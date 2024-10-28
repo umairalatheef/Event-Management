@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Add this CSS to the <head> section of your base.html or directly here -->
+<style>
+    body {
+        background-color: black; /* Set the background color to black */
+        color: white; /* Set text color to white for contrast */
+    }
+
+    main {
+        max-width: 800px; /* Limit the width of the content */
+        margin: 0 auto; /* Center the main content */
+        padding: 20px; /* Add some padding */
+        text-align: center; /* Center-align the text */
+    }
+
+    h1, h2 {
+        margin-bottom: 15px; /* Add space below headings */
+    }
+
+    a {
+        color: #00bfff; /* Set link color to a bright blue */
+    }
+
+    a:hover {
+        text-decoration: underline; /* Underline links on hover */
+    }
+</style>
+
+<main>
+    <h1>About Us</h1>
+    <p>Welcome to our event management platform! We specialize in organizing memorable events that cater to your needs.</p>
+    
+    <h2>Our Mission</h2>
+    <p>To provide seamless event management services that create unforgettable experiences.</p>
+    
+    <h2>Our Team</h2>
+    <p>Our team consists of dedicated professionals with years of experience in the event management industry.</p>
+
+    <h2>Contact Us</h2>
+    <p>If you have any questions, feel free to <a href="{% url 'contact' %}">contact us</a>.</p>
+</main>
+<!-- Back Button -->
+
+{% endblock %}
+
+
+

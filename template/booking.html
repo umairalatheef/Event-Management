@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <div class="container mt-5">
+    <h1 class="mb-4">Book Your Event</h1>
+
+    <style>
+      body {
+        background-color: black; /* Set the background color to black */
+        color: white; /* Set text color to white for contrast */
+      }
+      .logout-btn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+      }
+    </style>
+
+    <!-- Logout Button -->
+    <div class="logout-btn">
+        <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
+    </div>
+
+    <form method="post" class="border p-4 rounded bg-dark">
+      {% csrf_token %}
+      
+      <div class="mb-3">
+        {{ form.event_name.label_tag }}
+        <input type="text" name="event_name" id="id_event_name" class="form-control" placeholder="{{ form.event_name.value }}">
+      </div>
+      <div class="mb-3">
+        {{ form.event_place.label_tag }}
+        <input type="text" name="event_place" id="id_event_place" class="form-control" placeholder="{{ form.event_place.value }}">
+      </div>
+      <div class="mb-3">
+        {{ form.email.label_tag }}
+        <input type="email" name="email" id="id_email" class="form-control" placeholder="{{ form.email.value }}">
+      </div>
+      <div class="mb-3">
+        {{ form.event_date.label_tag }}
+        <input type="text" name="event_date" id="id_event_date" class="form-control datepicker" placeholder="{{ form.event_date.value }}">
+      </div>
+      <div class="mb-3">
+        {{ form.mobile_number.label_tag }}
+        <input type="text" name="mobile_number" id="id_mobile_number" class="form-control" placeholder="{{ form.mobile_number.value }}">
+      </div>
+      <div class="mb-3">
+        {{ form.number_of_persons.label_tag }}
+        <input type="number" name="number_of_persons" id="id_num_of_persons" class="form-control" placeholder="{{ form.number_of_persons.value }}">
+      </div>
+      <div class="mb-3">
+        {{ form.description.label_tag }}
+        <textarea name="description" id="id_description" class="form-control">{{ form.description.placeholder }}</textarea>
+      </div>
+      <!-- Center the Book Now Button -->
+      <div class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-primary">Book Now</button>
+      </div>
+
+    </form>
+
+    {% if total_cost %}
+      <div class="mt-3 alert alert-info">
+        <p>Total Cost: {{ total_cost }}</p>
+      </div>
+    {% endif %}
+  </div>
+{% endblock %}
+
+{% block extra_js %}
+<script type="text/javascript">
+    $(document).ready(function() {
+        // Initialize date picker
+        $('.datepicker').datepicker({
+            format: 'yyyy-mm-dd',
+            autoclose: true,
+            todayHighlight: true,
+            startDate: '0d'  // Prevent selecting past dates
+        });
+
+        // Update the total cost on number of persons change
+        $('#id_num_of_persons').on('input', function() {
+            var numberOfPersons = $(this).val();
+            var ratePerPerson = 250;
+            var totalCost = numberOfPersons * ratePerPerson;
+            if ($('.alert-info').length) {
+                $('.alert-info').text('Total Cost: ' + totalCost);
+            } else {
+                $('<div class="mt-3 alert alert-info">Total Cost: ' + totalCost + '</div>').appendTo('.container');
+            }
+        });
+    });
+</script>
+{% endblock %}

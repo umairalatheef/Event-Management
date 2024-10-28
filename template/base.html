@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Event Management{% endblock %}</title>
+    
+    <!-- Bootstrap 5 and Font Awesome CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Datepicker CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    
+    <!-- Static CSS -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/event.css' %}">
+
+    <style>
+        /* Custom styles for the navbar */
+        .navbar {
+            background-color: black;
+        }
+        .navbar-brand {
+            color: white;
+            font-weight: bold;
+        }
+        .navbar-nav .nav-link {
+            color: white;
+        }
+        .navbar-nav .nav-link:hover {
+            color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'index' %}">Y Zone Events</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                 
+                    <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <!-- jQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Datepicker JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    
+    <!-- Static JS -->
+    <script src="{% static 'js/booking.js' %}"></script>
+
+    <script>
+        $(document).ready(function() {
+            // If on the booking page, initialize date picker
+            if (window.location.pathname.includes('booking')) {
+                $('#id_event_date').datepicker({
+                    format: 'yyyy-mm-dd',
+                    todayHighlight: true,
+                    autoclose: true,
+                    startDate: new Date() // Disable past dates
+                });
+            }
+        });
+    </script>
+</body>
+</html>

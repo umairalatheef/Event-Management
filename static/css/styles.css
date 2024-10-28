@@ -1,0 +1,76 @@
+/* Custom styles for the navbar */
+.navbar {
+    background-color: black;
+    padding: 15px 0; /* Adds vertical padding to the navbar */
+}
+
+.navbar-brand {
+    color: white;
+    font-weight: bold;
+    font-size: 1.5rem; /* Slightly increase the font size */
+}
+
+.navbar-nav .nav-link {
+    color: white;
+    font-size: 1.1rem; /* Increase font size for better readability */
+    margin-right: 15px; /* Adds spacing between links */
+}
+
+.navbar-nav .nav-link:hover {
+    color: #f0f0f0;
+    text-decoration: underline; /* Adds an underline on hover for visibility */
+}
+
+/* General page background */
+body {
+    background-color: black;
+    color: white;
+}
+
+/* Carousel styling */
+.carousel-item img {
+    height: 450px; /* Maintain consistent height for carousel */
+    object-fit: cover;
+}
+
+/* Section styling */
+.about-us {
+    padding: 40px 0; /* Vertical padding for spacing */
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.our-services .card {
+    background-color: #333;
+    color: white;
+    border: none;
+    margin-bottom: 30px; /* Spacing between cards */
+}
+
+/* Service card image styling */
+.our-services .card-img-top {
+    height: 250px; /* Consistent height for service images */
+    object-fit: cover; /* Ensures images cover the area */
+}
+
+/* Know More button */
+.know-more-button .btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    font-size: 18px;
+}
+
+.know-more-button .btn:hover {
+    background-color: #0056b3;
+}
+
+/* Additional styling for better contrast */
+body, .about-us, .our-services {
+    background-color: black;
+    color: white;
+}
+
+.navbar-toggler-icon {
+    filter: invert(1); /* Ensure the toggle icon is visible on dark background */
+}

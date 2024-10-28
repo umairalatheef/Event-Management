@@ -1,0 +1,62 @@
+.<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Successful</title>
+    <style>
+        
+       
+    
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0c0000;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #28a745;
+        }
+        p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .total-cost {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .btn-home {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+     
+        
+    
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Booking Successful!</h1>
+        <p>Your event booking has been successfully processed.</p>
+        <p class="total-cost">Total Cost: ₹{{ total_cost }}</p>
+        <a href="{% url 'review' booking.id %}" class="btn-home">Review</a>
+
+    </div>
+</body>
+</html>
